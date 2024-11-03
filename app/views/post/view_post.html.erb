@@ -10,6 +10,10 @@ By <%= @post.user.username %>
 <br>
 <br>
 
+<%= link_to 'Edit Post', edit_post_path(@post) %>
+<br>
+<br>
+
 Comments:
 <ul>
     <% @post.comments.each do |comment| %>

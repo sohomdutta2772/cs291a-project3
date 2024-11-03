@@ -1,0 +1,14 @@
+<h1>Edit Post</h1>
+
+<%= form_with(model: @post, url: update_post_path(@post), method: :patch) do |form| %>
+  <div>
+    <%= form.label :content %>
+    <br>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.submit 'Update Post' %>
+  </div>
+<% end %>
+
+<a href="<%= post_path(@post) %>">Cancel</a>
