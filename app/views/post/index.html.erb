@@ -1,6 +1,9 @@
 <ul>
     <% @posts.each do |post| %>
-        <li><a href="post/<%= post.id %>"><%= post.user.username %>: <%= post.content %></a></li>
+        <li><a href="post/<%= post.id %>"><%= post.user.username %>: <%= post.content %></a>, <%= post.comments.count %> comments</li>
     <% end %>
 </ul>
 <a href="/create_post">make a post</a>
+<br>
+<br>
+<a href="/logout">log out</a>
