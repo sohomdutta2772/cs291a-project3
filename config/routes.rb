@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   get "create_post" => "post#create_post_page"
   post "handle_create_post" => "post#handle_create_post"
-  get "post/:id" => "post#view_post"
+  get "post/:id" => "post#view_post", as: :post
+
+  get "post/:id/edit" => "post#edit_post", as: :edit_post
+  patch "post/:id" => "post#update_post", as: :update_post
 
   get 'login' => 'user#show_login_form', as: 'login'
   post 'login' => 'user#handle_login'
