@@ -1,4 +1,7 @@
 class PostController < ApplicationController
+    before_action :fix_post_id, only: [:edit_post, :update_post]
+    before_action :check_is_right_user!, only: [:edit_post, :update_post]
+
     def index
         @posts = Post.order(:created_at)
     end
@@ -41,6 +44,16 @@ class PostController < ApplicationController
             redirect_to post_path(@post)
         end
     end
+
+    def check_is_right_user!
+        if @post.user != current_user
+            redirect_to root_path, alert: "Cannot edit other people's posts"
+        end 
+    end 
+
+    def fix_post_id
+        @post = Post.find(params[:id])
+    end 
 
     private 
     def parameters
