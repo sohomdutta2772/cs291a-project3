@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'login' => 'user#show_login_form', as: 'login'
   post 'login' => 'user#handle_login'
-  delete 'logout' => 'user#handle_logout', as: 'logout'
+  get 'logout' => 'user#handle_logout', as: 'logout'
 
   post "add_comment" => "comment#add_comment"
 
