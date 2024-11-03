@@ -10,15 +10,17 @@ By <%= @post.user.username %>
 <br>
 <br>
 
-<%= link_to 'Edit Post', edit_post_path(@post) %>
-<br>
-<br>
+<% if @current_user == @post.user %>
+    <%= link_to 'Edit Post', edit_post_path(@post) %>
+    <br>
+    <br>
 
-<form action="/post/<%= @post.id %>" method="delete">
-    <input type="submit" value="Delete Post">
-</form>
-<br>
-<br>
+    <form action="/post/<%= @post.id %>" method="delete">
+        <input type="submit" value="Delete Post">
+    </form>
+    <br>
+    <br>
+<% end %>
 
 Comments:
 <ul>

@@ -36,9 +36,9 @@ class PostController < ApplicationController
     def delete_post
         @post = Post.find(params[:id])
 
+        @post.destroy
+        
         redirect_to root_path
-
-        @post.delete()
     end
 
     def check_is_right_user!
