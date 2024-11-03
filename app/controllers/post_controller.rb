@@ -7,7 +7,7 @@ class PostController < ApplicationController
     end
 
     def handle_create_post
-        @post = Post.new({:content => params[:content]}) # needs user data
+        @post = Post.new({:content => params[:content], :user => @current_user})
         if @post.save
             print("success")
         else

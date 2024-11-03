@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post "handle_create_post" => "post#handle_create_post"
 
   get 'login' => 'user#show_login_form', as: 'login'
-  post '/login' => 'user#handle_login'
-  delete '/logout' => 'user#handle_logout', as: 'logout'
+  post 'login' => 'user#handle_login'
+  delete 'logout' => 'user#handle_logout', as: 'logout'
 
   # Defines the root path route ("/")
   root "post#index"
