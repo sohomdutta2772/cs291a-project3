@@ -14,6 +14,12 @@ By <%= @post.user.username %>
 <br>
 <br>
 
+<form action="/post/<%= @post.id %>" method="delete">
+    <input type="submit" value="Delete Post">
+</form>
+<br>
+<br>
+
 Comments:
 <ul>
     <% @post.comments.each do |comment| %>

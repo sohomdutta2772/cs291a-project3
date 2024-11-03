@@ -1,6 +1,6 @@
 class PostController < ApplicationController
-    before_action :fix_post_id, only: [:edit_post, :update_post]
-    before_action :check_is_right_user!, only: [:edit_post, :update_post]
+    before_action :fix_post_id, only: [:edit_post, :update_post, :delete_post]
+    before_action :check_is_right_user!, only: [:edit_post, :update_post, :delete_post]
 
     def index
         @posts = Post.order(:created_at)
@@ -36,13 +36,9 @@ class PostController < ApplicationController
     def delete_post
         @post = Post.find(params[:id])
 
-        if @current_user.id != @post.user_id
-            head :forbidden
-        end
+        redirect_to root_path
 
-        if @post.delete()
-            redirect_to post_path(@post)
-        end
+        @post.delete()
     end
 
     def check_is_right_user!
