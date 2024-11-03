@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get "post/:id/edit" => "post#edit_post", as: :edit_post
   patch "post/:id" => "post#update_post", as: :update_post
+  delete "post/:id" => "post#delete_post", as: :delete_post
 
   get 'login' => 'user#show_login_form', as: 'login'
   post 'login' => 'user#handle_login'

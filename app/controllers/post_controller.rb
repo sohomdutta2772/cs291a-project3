@@ -28,7 +28,19 @@ class PostController < ApplicationController
         if @post.update(parameters)
             redirect_to post_path(@post)
         end 
-    end 
+    end
+
+    def delete_post
+        @post = Post.find(params[:id])
+
+        if @current_user.id != @post.user_id
+            head :forbidden
+        end
+
+        if @post.delete()
+            redirect_to post_path(@post)
+        end
+    end
 
     private 
     def parameters
