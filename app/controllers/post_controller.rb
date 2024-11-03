@@ -8,11 +8,13 @@ class PostController < ApplicationController
 
     def handle_create_post
         @post = Post.new({:content => params[:content], :user => @current_user})
-        if @post.save
-            print("success")
-        else
+        if !@post.save
             puts @post.errors.full_messages
         end
         redirect_to root_path
+    end
+
+    def view_post
+        @post = Post.find_by_id(params[:id])
     end
 end

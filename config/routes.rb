@@ -9,10 +9,13 @@ Rails.application.routes.draw do
 
   get "create_post" => "post#create_post_page"
   post "handle_create_post" => "post#handle_create_post"
+  get "post/:id" => "post#view_post"
 
   get 'login' => 'user#show_login_form', as: 'login'
   post 'login' => 'user#handle_login'
   delete 'logout' => 'user#handle_logout', as: 'logout'
+
+  post "add_comment" => "comment#add_comment"
 
   # Defines the root path route ("/")
   root "post#index"

@@ -1,0 +1,24 @@
+<a href="/">back</a>
+<br>
+<br>
+
+By <%= @post.user.username %>
+<br>
+<br>
+
+<%= @post.content %>
+<br>
+<br>
+
+Comments:
+<ul>
+    <% @post.comments.each do |comment| %>
+        <li><%= comment.user.username %>: <%= comment.content %></li>
+    <% end %>
+</ul>
+<form action="/add_comment" method="post">
+    <input type="hidden" name="post_id" value="<%= @post.id %>">
+    <textarea name="content"></textarea>
+    <br>
+    <input type="submit" />
+</form>
