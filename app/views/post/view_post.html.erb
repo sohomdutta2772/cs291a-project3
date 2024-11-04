@@ -34,3 +34,6 @@ Comments:
     <br>
     <input type="submit" />
 </form>
+<% if flash[:failure] %>
+    <h1>posts about the election are not allowed</h1>
+<% end %>

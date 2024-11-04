@@ -11,14 +11,18 @@ class PostController < ApplicationController
 
     def handle_create_post
         @post = Post.new({:content => params[:content], :user => @current_user})
+        flash[:failure] = false
         if !@post.save
-            puts @post.errors.full_messages
+            flash[:failure] = true
         end
         redirect_to root_path
     end
 
     def view_post
         @post = Post.find_by_id(params[:id])
+        if @post.nil?
+            render plain: "404 Not Found", status: :not_found
+        end
     end
 
     def edit_post
